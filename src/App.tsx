@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, ReactNode } from "react";
 
-const withTheme = (Component) => {
-  return (props) => {
+const withTheme = (Component: ReactNode) => {
+  return (props: any) => {
     const [theme, setTheme] = useState("dark");
     const toggleTheme = () =>
       theme === "dark" ? setTheme("light") : setTheme("dark");
@@ -9,7 +9,12 @@ const withTheme = (Component) => {
   };
 };
 
-function App({ theme, setTheme }) {
+interface Props {
+  theme: string;
+  setTheme: () => void;
+}
+
+function App({ theme, setTheme }: Props) {
   return (
     <div
       style={{
